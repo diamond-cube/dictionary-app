@@ -14,8 +14,9 @@
   </form>
   <br />
 
-  <div class="card" v-if="isSearched === true">
-    <h3>{{ wordName }}</h3>
+  <div class="card container p-2" v-if="isSearched === true">
+    <h2>{{ wordName }} [ {{ wordPhonetic }} ]</h2>
+    <hr />
   </div>
 </template>
 
@@ -30,19 +31,22 @@ let isSearched = ref(false);
 let word = ref("");
 let wordData = ref([]);
 let wordName = ref("");
+let wordMeanings = ref([]);
+let wordPhonetic = ref("");
 
 const searchWord = () => {
   Axios.get(url + word.value.toLowerCase())
     .then((res) => {
       wordData.value = res.data;
       wordName.value = res.data[0].word;
-
+      wordPhonetic.value = res.data[0].phonetics[1].text;
       isSearched.value = true;
 
       console.log(res);
     })
 
     .catch(() => {
+      isSearched.value = false;
       Swal.fire("No such word exists!", "Enter a valid word", "error");
     });
 };

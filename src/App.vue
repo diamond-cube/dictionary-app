@@ -15,14 +15,11 @@ import Dictionary from "./components/Dictionary.vue";
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: left;
-  justify-content: left; */
   color: #2c3e50;
 }
 
 .background {
   background-color: rgb(95, 172, 235);
   color: white;
-  /* text-align: left; */
 }
 </style>
